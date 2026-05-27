@@ -1,12 +1,12 @@
-const gems_10 = require("../../models/Gems/gems_10");
+const gems_100 = require("../../models/Gems/gems_100");
 
-// gems_10.sync({ force: false });
+// gems_100.sync({ force: false });
 
-class Gems10Controller {
+class Gems100Controller {
 
 	async index(req, res) {
 
-		const gems = await gems_10.findAll();
+		const gems = await gems_100.findAll();
 
 		res.status(200);
 		res.json(gems);
@@ -24,7 +24,7 @@ class Gems10Controller {
 
 		id = parseInt(id);
 
-		const gem = await gems_10.findByPk(id);
+		const gem = await gems_100.findByPk(id);
 
 		if (gem == undefined) {
 			res.sendStatus(404);
@@ -38,7 +38,7 @@ class Gems10Controller {
 
 		let dice = req.params.dice;
 
-		const gem = await gems_10.findByPk(dice);
+		const gem = await gems_100.findByPk(dice);
 
 		if (gem == undefined) {
 			res.sendStatus(404);
@@ -51,7 +51,7 @@ class Gems10Controller {
 	async create(req, res) {
 		const { title, dice } = req.body;
 
-		await gems_10.create({
+		await gems_100.create({
 			title,
 			dice,
 			description
@@ -64,10 +64,10 @@ class Gems10Controller {
 
 		const gems = req.body;
 
-		await gems_10.bulkCreate(gems);
+		await gems_100.bulkCreate(gems);
 
 		res.sendStatus(201);
 	}
 }
 
-module.exports = new Gems10Controller();
+module.exports = new Gems100Controller();

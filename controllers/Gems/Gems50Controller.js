@@ -1,6 +1,6 @@
 const gems_50 = require("../../models/Gems/gems_50");
 
-gems_50.sync({ force: false });
+// gems_50.sync({ force: false });
 
 class Gems50Controller {
 
@@ -30,7 +30,7 @@ class Gems50Controller {
 			res.sendStatus(404);
 		} else {
 			res.status(200);
-			res.json(game);
+			res.json(gem);
 		}
 	}
 
