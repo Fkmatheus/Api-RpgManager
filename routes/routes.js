@@ -26,5 +26,13 @@ router.get("/gems100/roll/:dice", Gems100Controller.roll);
 router.post("/gem100", Gems100Controller.create);
 router.post("/gems100", Gems100Controller.createMany);
 
+// Gems_500 Routes
+const Gems500Controller = require("../controllers/Gems/Gems500Controller");
+router.get("/gems500", Gems500Controller.index);
+router.get("/gems500/:id", Gems500Controller.showById);
+router.get("/gems500/roll/:dice", Gems500Controller.roll);
+router.post("/gem500", Gems500Controller.create);
+router.post("/gems500", Gems500Controller.createMany);
+
 
 module.exports = router;
