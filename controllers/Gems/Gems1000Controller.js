@@ -1,12 +1,12 @@
-const gems_500 = require("../../models/Gems/gems_500");
+const gems_1000 = require("../../models/Gems/gems_1000");
 
-// gems_500.sync({ force: false });
+// gems_1000.sync({ force: false });
 
-class Gems500Controller {
+class Gems1000Controller {
 
 	async index(req, res) {
 
-		const gems = await gems_500.findAll();
+		const gems = await gems_1000.findAll();
 
 		res.status(200);
 		res.json(gems);
@@ -24,7 +24,7 @@ class Gems500Controller {
 
 		id = parseInt(id);
 
-		const gem = await gems_500.findByPk(id);
+		const gem = await gems_1000.findByPk(id);
 
 		if (gem == undefined) {
 			res.sendStatus(404);
@@ -38,7 +38,7 @@ class Gems500Controller {
 
 		let dice = req.params.dice;
 
-		const gem = await gems_500.findByPk(dice);
+		const gem = await gems_1000.findByPk(dice);
 
 		if (gem == undefined) {
 			res.sendStatus(404);
@@ -51,7 +51,7 @@ class Gems500Controller {
 	async create(req, res) {
 		const { title, dice } = req.body;
 
-		await gems_500.create({
+		await gems_1000.create({
 			title,
 			dice,
 			description
@@ -64,10 +64,10 @@ class Gems500Controller {
 
 		const gems = req.body;
 
-		await gems_500.bulkCreate(gems);
+		await gems_1000.bulkCreate(gems);
 
 		res.sendStatus(201);
 	}
 }
 
-module.exports = new Gems500Controller();
+module.exports = new Gems1000Controller();
