@@ -1,6 +1,6 @@
 const magic_A = require("../../models/MagicItems/magic_A");
 
-magic_A.sync({ force: false });
+// magic_A.sync({ force: false });
 
 class MagicItemAController {
 
@@ -36,16 +36,19 @@ class MagicItemAController {
 
 	async roll(req, res) {
 
-		let dice = req.params.dice;
+		const dice = req.params.dice;
 
-		const magic = await magic_A.findByPk(dice);
+    const magic = await magic_A.findOne({
+        where: {
+            dice: dice
+        }
+    });
 
-		if (magic == undefined) {
-			res.sendStatus(404);
-		} else {
-			res.status(200);
-			res.json(magic);
-		}
+    if (!magic) {
+        return res.sendStatus(404);
+    }
+
+    return res.status(200).json(magic);
 	}
 
 	async create(req, res) {

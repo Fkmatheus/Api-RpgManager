@@ -1,15 +1,15 @@
-const art_25 = require("../../models/ArtObjects/art_25");
+const magic_B = require("../../models/MagicItems/magic_B");
 
-// art_25.sync({ force: false });
+magic_B.sync({ force: false });
 
-class Art25Controller {
+class MagicItemBController {
 
 	async index(req, res) {
 
-		const arts = await art_25.findAll();
+		const magics = await magic_B.findAll();
 
 		res.status(200);
-		res.json(arts);
+		res.json(magics);
 
 	}
 
@@ -24,36 +24,37 @@ class Art25Controller {
 
 		id = parseInt(id);
 
-		const art = await art_25.findByPk(id);
+		const magic = await magic_B.findByPk(id);
 
-		if (art == undefined) {
+		if (magic == undefined) {
 			res.sendStatus(404);
 		} else {
 			res.status(200);
-			res.json(art);
+			res.json(magic);
 		}
 	}
 
 	async roll(req, res) {
+
 		const dice = req.params.dice;
 
-    const art = await art_25.findOne({
+    const magic = await magic_B.findOne({
         where: {
             dice: dice
         }
     });
 
-    if (!art) {
+    if (!magic) {
         return res.sendStatus(404);
     }
 
-    return res.status(200).json(art);
+    return res.status(200).json(magic);
 	}
 
 	async create(req, res) {
 		const { title, dice, description } = req.body;
 
-		await art_25.create({
+		await magic_B.create({
 			title,
 			dice,
 			description
@@ -64,12 +65,12 @@ class Art25Controller {
 
 	async createMany(req, res) {
 
-		const arts = req.body;
+		const magics = req.body;
 
-		await art_25.bulkCreate(arts);
+		await magic_B.bulkCreate(magics);
 
 		res.sendStatus(201);
 	}
 }
 
-module.exports = new Art25Controller();
+module.exports = new MagicItemBController();

@@ -36,16 +36,19 @@ class Art7500Controller {
 
 	async roll(req, res) {
 
-		let dice = req.params.dice;
+		const dice = req.params.dice;
 
-		const art = await art_7500.findByPk(dice);
+    const art = await art_7500.findOne({
+        where: {
+            dice: dice
+        }
+    });
 
-		if (art == undefined) {
-			res.sendStatus(404);
-		} else {
-			res.status(200);
-			res.json(art);
-		}
+    if (!art) {
+        return res.sendStatus(404);
+    }
+
+    return res.status(200).json(art);
 	}
 
 	async create(req, res) {

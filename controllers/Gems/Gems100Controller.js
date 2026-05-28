@@ -36,16 +36,19 @@ class Gems100Controller {
 
 	async roll(req, res) {
 
-		let dice = req.params.dice;
+		const dice = req.params.dice;
 
-		const gem = await gems_100.findByPk(dice);
+    const gem = await gems_100.findOne({
+        where: {
+            dice: dice
+        }
+    });
 
-		if (gem == undefined) {
-			res.sendStatus(404);
-		} else {
-			res.status(200);
-			res.json(gem);
-		}
+    if (!gem) {
+        return res.sendStatus(404);
+    }
+
+    return res.status(200).json(gem);
 	}
 
 	async create(req, res) {
