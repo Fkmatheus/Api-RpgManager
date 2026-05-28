@@ -82,5 +82,13 @@ router.get("/art2500/roll/:dice", Art2500Controller.roll);
 router.post("/art2500", Art2500Controller.create);
 router.post("/arts2500", Art2500Controller.createMany);
 
+// Art_7500 Routes
+const Art7500Controller = require("../controllers/ArtObjects/Art7500Controller");
+router.get("/art7500", Art7500Controller.index);
+router.get("/art7500/:id", Art7500Controller.showById);
+router.get("/art7500/roll/:dice", Art7500Controller.roll);
+router.post("/art7500", Art7500Controller.create);
+router.post("/arts7500", Art7500Controller.createMany);
+
 
 module.exports = router;
