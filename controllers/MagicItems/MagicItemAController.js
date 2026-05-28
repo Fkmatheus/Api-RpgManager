@@ -1,0 +1,73 @@
+const magic_A = require("../../models/MagicItems/magic_A");
+
+magic_A.sync({ force: false });
+
+class MagicItemAController {
+
+	async index(req, res) {
+
+		const magics = await magic_A.findAll();
+
+		res.status(200);
+		res.json(magics);
+
+	}
+
+	async showById(req, res) {
+
+		let id = req.params.id;
+
+		if (isNaN(id)) {
+			res.sendStatus(400);
+			return;
+		}
+
+		id = parseInt(id);
+
+		const magic = await magic_A.findByPk(id);
+
+		if (magic == undefined) {
+			res.sendStatus(404);
+		} else {
+			res.status(200);
+			res.json(magic);
+		}
+	}
+
+	async roll(req, res) {
+
+		let dice = req.params.dice;
+
+		const magic = await magic_A.findByPk(dice);
+
+		if (magic == undefined) {
+			res.sendStatus(404);
+		} else {
+			res.status(200);
+			res.json(magic);
+		}
+	}
+
+	async create(req, res) {
+		const { title, dice, description } = req.body;
+
+		await magic_A.create({
+			title,
+			dice,
+			description
+		});
+
+		res.sendStatus(201);
+	}
+
+	async createMany(req, res) {
+
+		const magics = req.body;
+
+		await magic_A.bulkCreate(magics);
+
+		res.sendStatus(201);
+	}
+}
+
+module.exports = new MagicItemAController();

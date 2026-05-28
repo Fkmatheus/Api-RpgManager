@@ -90,5 +90,13 @@ router.get("/art7500/roll/:dice", Art7500Controller.roll);
 router.post("/art7500", Art7500Controller.create);
 router.post("/arts7500", Art7500Controller.createMany);
 
+// Magic Item A Routes
+const MagicItemAController = require("../controllers/MagicItems/MagicItemAController");
+router.get("/magicA", MagicItemAController.index);
+router.get("/magicA/:id", MagicItemAController.showById);
+router.get("/magicA/roll/:dice", MagicItemAController.roll);
+router.post("/magicA", MagicItemAController.create);
+router.post("/magicAs", MagicItemAController.createMany);
+
 
 module.exports = router;
