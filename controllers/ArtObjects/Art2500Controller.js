@@ -1,12 +1,12 @@
-const art_750 = require("../../models/ArtObjects/art_750");
+const art_2500 = require("../../models/ArtObjects/art_2500");
 
-// art_750.sync({ force: false });
+art_2500.sync({ force: false });
 
-class Art750Controller {
+class Art2500Controller {
 
 	async index(req, res) {
 
-		const arts = await art_750.findAll();
+		const arts = await art_2500.findAll();
 
 		res.status(200);
 		res.json(arts);
@@ -24,7 +24,7 @@ class Art750Controller {
 
 		id = parseInt(id);
 
-		const art = await art_750.findByPk(id);
+		const art = await art_2500.findByPk(id);
 
 		if (art == undefined) {
 			res.sendStatus(404);
@@ -38,7 +38,7 @@ class Art750Controller {
 
 		let dice = req.params.dice;
 
-		const art = await art_750.findByPk(dice);
+		const art = await art_2500.findByPk(dice);
 
 		if (art == undefined) {
 			res.sendStatus(404);
@@ -51,7 +51,7 @@ class Art750Controller {
 	async create(req, res) {
 		const { title, dice, description } = req.body;
 
-		await art_750.create({
+		await art_2500.create({
 			title,
 			dice,
 			description
@@ -64,10 +64,10 @@ class Art750Controller {
 
 		const arts = req.body;
 
-		await art_750.bulkCreate(arts);
+		await art_2500.bulkCreate(arts);
 
 		res.sendStatus(201);
 	}
 }
 
-module.exports = new Art750Controller();
+module.exports = new Art2500Controller();
