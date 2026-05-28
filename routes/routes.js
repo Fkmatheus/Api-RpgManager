@@ -58,5 +58,13 @@ router.get("/art25/roll/:dice", Art25Controller.roll);
 router.post("/art25", Art25Controller.create);
 router.post("/arts25", Art25Controller.createMany);
 
+// Art_250 Routes
+const Art250Controller = require("../controllers/ArtObjects/Art250Controller");
+router.get("/art250", Art250Controller.index);
+router.get("/art250/:id", Art250Controller.showById);
+router.get("/art250/roll/:dice", Art250Controller.roll);
+router.post("/art250", Art250Controller.create);
+router.post("/arts250", Art250Controller.createMany);
+
 
 module.exports = router;
