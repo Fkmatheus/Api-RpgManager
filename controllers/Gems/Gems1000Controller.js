@@ -49,7 +49,7 @@ class Gems1000Controller {
 	}
 
 	async create(req, res) {
-		const { title, dice } = req.body;
+		const { title, dice, description } = req.body;
 
 		await gems_1000.create({
 			title,

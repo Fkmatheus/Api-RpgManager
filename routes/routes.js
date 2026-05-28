@@ -50,5 +50,13 @@ router.get("/gems5000/roll/:dice", Gems5000Controller.roll);
 router.post("/gem5000", Gems5000Controller.create);
 router.post("/gems5000", Gems5000Controller.createMany);
 
+// Art_25 Routes
+const Art25Controller = require("../controllers/ArtObjects/Art25Controller");
+router.get("/art25", Art25Controller.index);
+router.get("/art25/:id", Art25Controller.showById);
+router.get("/art25/roll/:dice", Art25Controller.roll);
+router.post("/art25", Art25Controller.create);
+router.post("/arts25", Art25Controller.createMany);
+
 
 module.exports = router;

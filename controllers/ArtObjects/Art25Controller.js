@@ -1,15 +1,15 @@
-const gems_500 = require("../../models/Gems/gems_500");
+const art_25 = require("../../models/ArtObjects/art_25");
 
-// gems_500.sync({ force: false });
+art_25.sync({ force: false });
 
-class Gems500Controller {
+class Art25Controller {
 
 	async index(req, res) {
 
-		const gems = await gems_500.findAll();
+		const arts = await art_25.findAll();
 
 		res.status(200);
-		res.json(gems);
+		res.json(arts);
 
 	}
 
@@ -24,13 +24,13 @@ class Gems500Controller {
 
 		id = parseInt(id);
 
-		const gem = await gems_500.findByPk(id);
+		const art = await art_25.findByPk(id);
 
-		if (gem == undefined) {
+		if (art == undefined) {
 			res.sendStatus(404);
 		} else {
 			res.status(200);
-			res.json(gem);
+			res.json(art);
 		}
 	}
 
@@ -38,20 +38,20 @@ class Gems500Controller {
 
 		let dice = req.params.dice;
 
-		const gem = await gems_500.findByPk(dice);
+		const art = await art_25.findByPk(dice);
 
-		if (gem == undefined) {
+		if (art == undefined) {
 			res.sendStatus(404);
 		} else {
 			res.status(200);
-			res.json(gem);
+			res.json(art);
 		}
 	}
 
 	async create(req, res) {
 		const { title, dice, description } = req.body;
 
-		await gems_500.create({
+		await art_25.create({
 			title,
 			dice,
 			description
@@ -62,12 +62,12 @@ class Gems500Controller {
 
 	async createMany(req, res) {
 
-		const gems = req.body;
+		const arts = req.body;
 
-		await gems_500.bulkCreate(gems);
+		await art_25.bulkCreate(arts);
 
 		res.sendStatus(201);
 	}
 }
 
-module.exports = new Gems500Controller();
+module.exports = new Art25Controller();
