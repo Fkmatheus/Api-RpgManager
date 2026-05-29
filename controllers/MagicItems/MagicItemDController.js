@@ -1,12 +1,12 @@
-const magic_C = require("../../models/MagicItems/magic_C");
+const magic_D = require("../../models/MagicItems/magic_D");
 
-// magic_C.sync({ force: false });
+magic_D.sync({ force: false }); 
 
-class MagicItemCController {
+class MagicItemDController {
 
 	async index(req, res) {
 
-		const magics = await magic_C.findAll();
+		const magics = await magic_D.findAll();
 
 		res.status(200);
 		res.json(magics);
@@ -24,7 +24,7 @@ class MagicItemCController {
 
 		id = parseInt(id);
 
-		const magic = await magic_C.findByPk(id);
+		const magic = await magic_D.findByPk(id);
 
 		if (magic == undefined) {
 			res.sendStatus(404);
@@ -38,7 +38,7 @@ class MagicItemCController {
 
 		const dice = req.params.dice;
 
-    const magic = await magic_C.findOne({
+    const magic = await magic_D.findOne({
         where: {
             dice: dice
         }
@@ -54,7 +54,7 @@ class MagicItemCController {
 	async create(req, res) {
 		const { title, dice, description } = req.body;
 
-		await magic_C.create({
+		await magic_D.create({
 			title,
 			dice,
 			description
@@ -67,10 +67,10 @@ class MagicItemCController {
 
 		const magics = req.body;
 
-		await magic_C.bulkCreate(magics);
+		await magic_D.bulkCreate(magics);
 
 		res.sendStatus(201);
 	}
 }
 
-module.exports = new MagicItemCController();
+module.exports = new MagicItemDController();
