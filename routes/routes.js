@@ -106,5 +106,13 @@ router.get("/magicB/roll/:dice", MagicItemBController.roll);
 router.post("/magicB", MagicItemBController.create);
 router.post("/magicBs", MagicItemBController.createMany);
 
+// Magic Item C Routes
+const MagicItemCController = require("../controllers/MagicItems/MagicItemCController");
+router.get("/magicC", MagicItemCController.index);
+router.get("/magicC/:id", MagicItemCController.showById);
+router.get("/magicC/roll/:dice", MagicItemCController.roll);
+router.post("/magicC", MagicItemCController.create);
+router.post("/magicCs", MagicItemCController.createMany);
+
 
 module.exports = router;
