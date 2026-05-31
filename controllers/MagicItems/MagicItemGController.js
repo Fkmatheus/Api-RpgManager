@@ -1,6 +1,6 @@
 const magic_G = require("../../models/MagicItems/magic_G");
 
-magic_G.sync({ force: false }); 
+// magic_G.sync({ force: false }); 
 
 class MagicItemGController {
 
@@ -67,7 +67,7 @@ class MagicItemGController {
 
 		const magics = req.body;
 
-		await magic_F.bulkCreate(magics);
+		await magic_G.bulkCreate(magics);
 
 		res.sendStatus(201);
 	}
