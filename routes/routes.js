@@ -162,5 +162,7 @@ router.get("/magicI/roll/:dice", MagicItemIController.roll);
 router.post("/magicI", MagicItemIController.create);
 router.post("/magicIs", MagicItemIController.createMany);
 
+const TreasurePileController0_4 = require("../controllers/TreasurePile/TreasurePileController0_4");
+router.get("/treasurepile/0-4/roll/:dice", TreasurePileController0_4.roll);
 
 module.exports = router;
