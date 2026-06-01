@@ -1,17 +1,31 @@
 const gem_10 = require("../../models/Gems/gems_10");
 const gem_50 = require("../../models/Gems/gems_50");
 const art_25 = require("../../models/ArtObjects/art_25");
+const magic_A = require("../../models/MagicItems/magic_A");
+const magic_B = require("../../models/MagicItems/magic_B");
+const TreasureGenerator = require('../../helpers/TreasureGenerator');
 
 class TreasurePileController0_4 {
   async roll(req, res) {
 
     const dice = req.params.dice;
     const diceInt = parseInt(dice, 10);
+
     let teasure = {
       gems: [],
+      gemsPrice: 0,
       arts: [],
+      artsPrice: 0,
       itens: []
     }
+
+    let gemQuantity = 0;
+    let artQuantity = 0;
+    let itemQuantity = 0;
+    let gems = {};
+    let arts = {};
+
+
 
     switch (true) {
 
@@ -20,28 +34,169 @@ class TreasurePileController0_4 {
 
       case diceInt >= 7 && diceInt <= 16:
 
-        // Dados da pilha 2d6 gemas 10 po
-        let dado1 = Math.floor(Math.random() * 6) + 1;
-        let dado2 = Math.floor(Math.random() * 6) + 1;
-        let dadoSum = dado1 + dado2;
+        gemQuantity = TreasureGenerator.rollMultipleDice(2, 6);
 
-        for (let i = 1; i <= dadoSum; i++) {
+        gems = await TreasureGenerator.generateGems(
+          gem_10,
+          gemQuantity,
+          10,
+          12
+        );
 
-          // Dado de gema 1d12 a tabela de gemas 10po
-          let dadoGem = Math.floor(Math.random() * 12) + 1;
-          dadoGem = dadoGem.toString();
-          let gem = await gem_10.findOne({
-            where: {
-              dice: dadoGem
-            }
-          });
-
-          if (gem) {
-            teasure.gems.push(gem.title);
-          }
-        }
+        teasure.gems = gems.gems;
+        teasure.gemsPrice = gems.price;
 
         return res.status(200).json(teasure);
+
+      case diceInt >= 17 && diceInt <= 26:
+
+        artQuantity = TreasureGenerator.rollMultipleDice(2, 4);
+
+        arts = await TreasureGenerator.generateArts(
+          art_25,
+          artQuantity,
+          25,
+          12
+        );
+
+        teasure.arts = arts.arts;
+        teasure.artsPrice = arts.price;
+
+        return res.status(200).json(teasure);
+
+      case diceInt >= 27 && diceInt <= 36:
+
+        gemQuantity = TreasureGenerator.rollMultipleDice(2, 6);
+
+        gems = await TreasureGenerator.generateGems(
+          gem_50,
+          gemQuantity,
+          50,
+          12
+        );
+
+        teasure.gems = gems.gems;
+        teasure.gemsPrice = gems.price;
+
+        return res.status(200).json(teasure);
+
+      case diceInt >= 37 && diceInt <= 44:
+
+        gemQuantity = TreasureGenerator.rollMultipleDice(2, 6);
+
+        gems = await TreasureGenerator.generateGems(
+          gem_10,
+          gemQuantity,
+          10,
+          12
+        );
+
+        teasure.gems = gems.gems;
+        teasure.gemsPrice = gems.price;
+
+        itemQuantity = TreasureGenerator.rollDice(6);
+
+        teasure.itens = await TreasureGenerator.generateMagicItems(
+          magic_A,
+          itemQuantity
+        );
+
+        return res.status(200).json(teasure);
+
+      case diceInt >= 45 && diceInt <= 52:
+
+        artQuantity = TreasureGenerator.rollMultipleDice(2, 4);
+
+        arts = await TreasureGenerator.generateArts(
+          art_25,
+          artQuantity,
+          25,
+          12
+        );
+
+        teasure.arts = arts.arts;
+        teasure.artsPrice = arts.price;
+
+        itemQuantity = TreasureGenerator.rollDice(6);
+
+        teasure.itens = await TreasureGenerator.generateMagicItems(
+          magic_A,
+          itemQuantity
+        );
+
+        return res.status(200).json(teasure);
+
+      case diceInt >= 53 && diceInt <= 60:
+
+        gemQuantity = TreasureGenerator.rollMultipleDice(2, 6);
+
+        gems = await TreasureGenerator.generateGems(
+          gem_50,
+          gemQuantity,
+          50,
+          12
+        );
+
+        teasure.gems = gems.gems;
+        teasure.gemsPrice = gems.price;
+
+        itemQuantity = TreasureGenerator.rollDice(6);
+
+        teasure.itens = await TreasureGenerator.generateMagicItems(
+          magic_A,
+          itemQuantity
+        );
+
+        return res.status(200).json(teasure);
+
+      case diceInt >= 61 && diceInt <= 65:
+
+        gemQuantity = TreasureGenerator.rollMultipleDice(2, 6);
+
+        gems = await TreasureGenerator.generateGems(
+          gem_10,
+          gemQuantity,
+          10,
+          12
+        );
+
+        teasure.gems = gems.gems;
+        teasure.gemsPrice = gems.price;
+
+        itemQuantity = TreasureGenerator.rollDice(4);
+
+        teasure.itens = await TreasureGenerator.generateMagicItems(
+          magic_B,
+          itemQuantity
+        );
+
+        return res.status(200).json(teasure);
+
+      case diceInt >= 66 && diceInt <= 70:
+
+        artQuantity = TreasureGenerator.rollMultipleDice(2, 4);
+
+        arts = await TreasureGenerator.generateArts(
+          art_25,
+          artQuantity,
+          25,
+          12
+        );
+
+        teasure.arts = arts.arts;
+        teasure.artsPrice = arts.price;
+
+        itemQuantity = TreasureGenerator.rollDice(4);
+
+        teasure.itens = await TreasureGenerator.generateMagicItems(
+          magic_B,
+          itemQuantity
+        );
+
+        return res.status(200).json(teasure);
+
+
+
     }
 
 
