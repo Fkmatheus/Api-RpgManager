@@ -5,7 +5,7 @@ const magic_A = require("../../models/MagicItems/magic_A");
 const magic_B = require("../../models/MagicItems/magic_B");
 const magic_C = require("../../models/MagicItems/magic_C");
 const magic_F = require("../../models/MagicItems/magic_F");
-const magic_G = require("../../models/MagicItems/magic_F");
+const magic_G = require("../../models/MagicItems/magic_G");
 const TreasureGenerator = require('../../helpers/TreasureGenerator');
 
 class TreasurePileController0_4 {

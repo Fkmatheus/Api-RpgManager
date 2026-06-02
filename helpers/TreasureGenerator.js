@@ -16,7 +16,7 @@ class TreasureGenerator {
 
   static async generateGems(model, quantity, price, type) {
 
-    const gems = [];
+    const gemsMap = {};
 
     for (let i = 0; i < quantity; i++) {
 
@@ -27,9 +27,14 @@ class TreasureGenerator {
       });
 
       if (gem) {
-        gems.push(gem.title);
+        gemsMap[gem.title] = (gemsMap[gem.title] || 0) + 1;
       }
     }
+
+    const gems = Object.entries(gemsMap).map(([name, quantity]) => ({
+      name,
+      quantity
+    }));
 
     return {
       gems,
@@ -39,7 +44,7 @@ class TreasureGenerator {
 
   static async generateArts(model, quantity, price, type) {
 
-    const arts = [];
+    const artsMap = {};
 
     for (let i = 0; i < quantity; i++) {
 
@@ -50,9 +55,14 @@ class TreasureGenerator {
       });
 
       if (art) {
-        arts.push(art.title);
+        artsMap[art.title] = (artsMap[art.title] || 0) + 1;
       }
     }
+
+    const arts = Object.entries(artsMap).map(([name, quantity]) => ({
+      name,
+      quantity
+    }));
 
     return {
       arts,
@@ -62,7 +72,7 @@ class TreasureGenerator {
 
   static async generateMagicItems(model, quantity) {
 
-    const items = [];
+    const itemsMap = {};
 
     for (let i = 0; i < quantity; i++) {
 
@@ -73,9 +83,14 @@ class TreasureGenerator {
       });
 
       if (item) {
-        items.push(item.title);
+        itemsMap[item.title] = (itemsMap[item.title] || 0) + 1;
       }
     }
+
+    const items = Object.entries(itemsMap).map(([name, quantity]) => ({
+      name,
+      quantity
+    }));
 
     return items;
   }
