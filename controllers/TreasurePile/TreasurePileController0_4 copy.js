@@ -14,16 +14,12 @@ class TreasurePileController0_4 {
     const dice = req.params.dice;
     const diceInt = parseInt(dice, 10);
 
-    const poValue = TreasureGenerator.rollMultipleDice(2, 6) * 10;
-
     let teasure = {
       gems: [],
       gemsPrice: 0,
       arts: [],
       artsPrice: 0,
-      itens: [],
-      po: poValue,
-      pl: 0
+      itens: []
     }
 
     let gemQuantity = 0;
@@ -31,6 +27,8 @@ class TreasurePileController0_4 {
     let itemQuantity = 0;
     let gems = {};
     let arts = {};
+
+
 
     switch (true) {
 
