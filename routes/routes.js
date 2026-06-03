@@ -168,4 +168,7 @@ router.get("/treasurepile/0-4/roll/:dice", TreasurePileController0_4.roll);
 const TreasurePileController5_10 = require("../controllers/TreasurePile/TreasurePileController5_10");
 router.get("/treasurepile/5-10/roll/:dice", TreasurePileController5_10.roll);
 
+const TreasurePileController11_16 = require("../controllers/TreasurePile/TreasurePileController11_16");
+router.get("/treasurepile/11-16/roll/:dice", TreasurePileController11_16.roll);
+
 module.exports = router;
