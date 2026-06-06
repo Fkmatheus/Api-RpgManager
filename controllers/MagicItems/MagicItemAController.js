@@ -13,6 +13,20 @@ class MagicItemAController {
 
 	}
 
+	async indexUnique(req, res) {
+		const magics = await magic_A.findAll({
+			order: [["id", "ASC"]],
+		});
+
+		const uniqueMagics = [
+			...new Map(
+				magics.map(item => [item.title, item])
+			).values()
+		];
+
+		return res.status(200).json(uniqueMagics);
+	}
+
 	async showById(req, res) {
 
 		let id = req.params.id;
@@ -38,17 +52,17 @@ class MagicItemAController {
 
 		const dice = req.params.dice;
 
-    const magic = await magic_A.findOne({
-        where: {
-            dice: dice
-        }
-    });
+		const magic = await magic_A.findOne({
+			where: {
+				dice: dice
+			}
+		});
 
-    if (!magic) {
-        return res.sendStatus(404);
-    }
+		if (!magic) {
+			return res.sendStatus(404);
+		}
 
-    return res.status(200).json(magic);
+		return res.status(200).json(magic);
 	}
 
 	async create(req, res) {

@@ -13,6 +13,20 @@ class MagicItemIController {
 
 	}
 
+	async indexUnique(req, res) {
+		const magics = await magic_I.findAll({
+			order: [["id", "ASC"]],
+		});
+
+		const uniqueMagics = [
+			...new Map(
+				magics.map(item => [item.title, item])
+			).values()
+		];
+
+		return res.status(200).json(uniqueMagics);
+	}
+
 	async showById(req, res) {
 
 		let id = req.params.id;

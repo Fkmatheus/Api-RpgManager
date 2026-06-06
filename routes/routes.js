@@ -93,6 +93,7 @@ router.post("/arts7500", Art7500Controller.createMany);
 // Magic Item A Routes
 const MagicItemAController = require("../controllers/MagicItems/MagicItemAController");
 router.get("/magicA", MagicItemAController.index);
+router.get("/unique/magicA", MagicItemAController.indexUnique);
 router.get("/magicA/:id", MagicItemAController.showById);
 router.get("/magicA/roll/:dice", MagicItemAController.roll);
 router.post("/magicA", MagicItemAController.create);
@@ -101,6 +102,7 @@ router.post("/magicAs", MagicItemAController.createMany);
 // Magic Item B Routes
 const MagicItemBController = require("../controllers/MagicItems/MagicItemBController");
 router.get("/magicB", MagicItemBController.index);
+router.get("/unique/magicB", MagicItemBController.indexUnique);
 router.get("/magicB/:id", MagicItemBController.showById);
 router.get("/magicB/roll/:dice", MagicItemBController.roll);
 router.post("/magicB", MagicItemBController.create);
@@ -109,6 +111,7 @@ router.post("/magicBs", MagicItemBController.createMany);
 // Magic Item C Routes
 const MagicItemCController = require("../controllers/MagicItems/MagicItemCController");
 router.get("/magicC", MagicItemCController.index);
+router.get("/unique/magicC", MagicItemCController.indexUnique);
 router.get("/magicC/:id", MagicItemCController.showById);
 router.get("/magicC/roll/:dice", MagicItemCController.roll);
 router.post("/magicC", MagicItemCController.create);
@@ -117,6 +120,7 @@ router.post("/magicCs", MagicItemCController.createMany);
 // Magic Item D Routes
 const MagicItemDController = require("../controllers/MagicItems/MagicItemDController");
 router.get("/magicD", MagicItemDController.index);
+router.get("/unique/magicD", MagicItemDController.indexUnique);
 router.get("/magicD/:id", MagicItemDController.showById);
 router.get("/magicD/roll/:dice", MagicItemDController.roll);
 router.post("/magicD", MagicItemDController.create);
@@ -125,6 +129,7 @@ router.post("/magicDs", MagicItemDController.createMany);
 // Magic Item E Routes
 const MagicItemEController = require("../controllers/MagicItems/MagicItemEController");
 router.get("/magicE", MagicItemEController.index);
+router.get("/unique/magicE", MagicItemEController.indexUnique);
 router.get("/magicE/:id", MagicItemEController.showById);
 router.get("/magicE/roll/:dice", MagicItemEController.roll);
 router.post("/magicE", MagicItemEController.create);
@@ -133,6 +138,7 @@ router.post("/magicEs", MagicItemEController.createMany);
 // Magic Item F Routes
 const MagicItemFController = require("../controllers/MagicItems/MagicItemFController");
 router.get("/magicF", MagicItemFController.index);
+router.get("/unique/magicF", MagicItemFController.indexUnique);
 router.get("/magicF/:id", MagicItemFController.showById);
 router.get("/magicF/roll/:dice", MagicItemFController.roll);
 router.post("/magicF", MagicItemFController.create);
@@ -141,6 +147,7 @@ router.post("/magicFs", MagicItemFController.createMany);
 // Magic Item G Routes
 const MagicItemGController = require("../controllers/MagicItems/MagicItemGController");
 router.get("/magicG", MagicItemGController.index);
+router.get("/unique/magicG", MagicItemGController.indexUnique);
 router.get("/magicG/:id", MagicItemGController.showById);
 router.get("/magicG/roll/:dice", MagicItemGController.roll);
 router.post("/magicG", MagicItemGController.create);
@@ -149,6 +156,7 @@ router.post("/magicGs", MagicItemGController.createMany);
 // Magic Item H Routes
 const MagicItemHController = require("../controllers/MagicItems/MagicItemHController");
 router.get("/magicH", MagicItemHController.index);
+router.get("/unique/magicH", MagicItemHController.indexUnique);
 router.get("/magicH/:id", MagicItemHController.showById);
 router.get("/magicH/roll/:dice", MagicItemHController.roll);
 router.post("/magicH", MagicItemHController.create);
@@ -157,6 +165,7 @@ router.post("/magicHs", MagicItemHController.createMany);
 // Magic Item I Routes
 const MagicItemIController = require("../controllers/MagicItems/MagicItemIController");
 router.get("/magicI", MagicItemIController.index);
+router.get("/unique/magicI", MagicItemIController.indexUnique);
 router.get("/magicI/:id", MagicItemIController.showById);
 router.get("/magicI/roll/:dice", MagicItemIController.roll);
 router.post("/magicI", MagicItemIController.create);
