@@ -22,6 +22,6 @@ connection
 
 app.use("/", routes);
 
-app.listen(45000, () => {
+app.listen(45000, "0.0.0.0", () => {
     console.log("API Rodando");
 });
