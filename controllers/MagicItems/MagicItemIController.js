@@ -65,6 +65,23 @@ class MagicItemIController {
     return res.status(200).json(magic);
 	}
 
+	async searchByName(req, res) {
+
+		const name = req.params.name;
+
+		const magic = await magic_I.findOne({
+			where: {
+				title: name
+			}
+		});
+
+		if (!magic) {
+			return res.sendStatus(404);
+		}
+
+		return res.status(200).json(magic);
+	}
+
 	async create(req, res) {
 		const { title, dice, description } = req.body;
 

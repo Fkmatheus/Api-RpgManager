@@ -50,6 +50,23 @@ class Art25Controller {
     return res.status(200).json(art);
 	}
 
+	async searchByName(req, res) {
+
+		const name = req.params.name;
+
+		const art = await art_25.findOne({
+			where: {
+				title: name
+			}
+		});
+
+		if (!art) {
+			return res.sendStatus(404);
+		}
+
+		return res.status(200).json(art);
+	}
+
 	async create(req, res) {
 		const { title, dice, description } = req.body;
 

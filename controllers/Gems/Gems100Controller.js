@@ -51,6 +51,23 @@ class Gems100Controller {
     return res.status(200).json(gem);
 	}
 
+	async searchByName(req, res) {
+
+		const name = req.params.name;
+
+		const gem = await gems_100.findOne({
+			where: {
+				title: name
+			}
+		});
+
+		if (!gem) {
+			return res.sendStatus(404);
+		}
+
+		return res.status(200).json(gem);
+	}
+
 	async create(req, res) {
 		const { title, dice, description } = req.body;
 
