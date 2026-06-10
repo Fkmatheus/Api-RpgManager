@@ -203,4 +203,9 @@ router.get("/treasurepile/11-16/roll/:dice", TreasurePileController11_16.roll);
 const TreasurePileController17 = require("../controllers/TreasurePile/TreasurePileController17");
 router.get("/treasurepile/17/roll/:dice", TreasurePileController17.roll);
 
+const SearchAllController = require("../controllers/SearchAll/SearchAllController");
+router.get("/searchAll/gem/:name", SearchAllController.findAllGemByName);
+router.get("/searchAll/obj/:name", SearchAllController.findAllObjByName);
+router.get("/searchAll/item/:name", SearchAllController.findAllItensByName);
+
 module.exports = router;
