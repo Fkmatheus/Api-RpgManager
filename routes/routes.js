@@ -208,4 +208,8 @@ router.get("/searchAll/gem/:name", SearchAllController.findAllGemByName);
 router.get("/searchAll/obj/:name", SearchAllController.findAllObjByName);
 router.get("/searchAll/item/:name", SearchAllController.findAllItensByName);
 
+const MagicSpells = require("../controllers/MagicSpells/magicSpellsController");
+router.get("/magicSpells", MagicSpells.index);
+router.get("/magicSpells/create", MagicSpells.create);
+
 module.exports = router;
