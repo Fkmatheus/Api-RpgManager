@@ -15,7 +15,7 @@ const magicSpells = connection.define("magicSpells", {
   },
 
   description: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
     allowNull: false
   },
 
