@@ -5,7 +5,12 @@ magicSpells.sync({ force: false });
 class MagicSpellsController {
   async index(req, res) {
 
-    const spells = await magicSpells.findAll();
+    const spells = await magicSpells.findAll({
+      order: [
+        ['nivel', 'ASC'],
+        ['title', 'ASC']
+      ]
+    });
 
     res.status(200);
     res.json(spells);
@@ -13,6 +18,17 @@ class MagicSpellsController {
   }
 
   async create(req, res) {
+    console.log("ENTROU AQUI");
+    console.log("ENTROU AQUI");
+    console.log("ENTROU AQUI");
+    console.log("ENTROU AQUI");
+    console.log("ENTROU AQUI");
+    console.log("ENTROU AQUI");
+    console.log("ENTROU AQUI");
+    console.log("ENTROU AQUI");
+    console.log("ENTROU AQUI");
+    console.log("HEADERS:", req.headers["content-type"]);
+    console.log("RAW BODY:", req.body);
     const { title,
       nivel,
       description,

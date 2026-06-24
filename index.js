@@ -7,8 +7,10 @@ const connection = require("./database/connection");
 
 const routes = require("./routes/routes");
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+// 🔥 ESSENCIAL (substitui body-parser)
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.use(cors());
 
 connection
@@ -21,6 +23,7 @@ connection
     });
 
 app.use("/", routes);
+
 
 app.listen(45000, "0.0.0.0", () => {
     console.log("API Rodando");

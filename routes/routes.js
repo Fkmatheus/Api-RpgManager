@@ -210,6 +210,6 @@ router.get("/searchAll/item/:name", SearchAllController.findAllItensByName);
 
 const MagicSpells = require("../controllers/MagicSpells/magicSpellsController");
 router.get("/magicSpells", MagicSpells.index);
-router.get("/magicSpells/create", MagicSpells.create);
+router.post("/magicSpells/create", MagicSpells.create);
 
 module.exports = router;
