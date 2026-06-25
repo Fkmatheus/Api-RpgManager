@@ -1,3 +1,5 @@
+const { Op } = require("sequelize");
+
 const magicSpells = require("../../models/MagicSpells/magicSpells")
 
 magicSpells.sync({ force: false });
@@ -5,30 +7,41 @@ magicSpells.sync({ force: false });
 class MagicSpellsController {
   async index(req, res) {
 
+    const { title, nivel, school, class: classFilter } = req.query;
+
+    const where = {};
+
+    if (title) {
+      where.title = {
+        [Op.like]: `%${title}%`
+      };
+    }
+
+    if (nivel) {
+      where.nivel = nivel;
+    }
+
+    if (school) {
+      where.school = school;
+    }
+
+    if (classFilter) {
+      where[classFilter] = true;
+    }
+
     const spells = await magicSpells.findAll({
+      where,
       order: [
         ['nivel', 'ASC'],
         ['title', 'ASC']
       ]
     });
 
-    res.status(200);
-    res.json(spells);
+    return res.status(200).json(spells);
 
   }
 
   async create(req, res) {
-    console.log("ENTROU AQUI");
-    console.log("ENTROU AQUI");
-    console.log("ENTROU AQUI");
-    console.log("ENTROU AQUI");
-    console.log("ENTROU AQUI");
-    console.log("ENTROU AQUI");
-    console.log("ENTROU AQUI");
-    console.log("ENTROU AQUI");
-    console.log("ENTROU AQUI");
-    console.log("HEADERS:", req.headers["content-type"]);
-    console.log("RAW BODY:", req.body);
     const { title,
       nivel,
       description,
